@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.example.application.controller.BookController">
+        <property name="serviceBookInterface" ref="memberRef"></property>
+
+    </bean>
+
+    <bean id="standardRef" class="org.example.application.service.StandardBookService">
+
+        <property name="bookRepositoryInterface" ref="refInMemory"></property>
+        <property name="bookFactoryManager" ref="factoryRef"></property>
+    </bean>
+
+    <bean id="memberRef" class="org.example.application.service.MemberBookService">
+        <property name="bookRepositoryInterface" ref="refMysql"></property>
+        <property name="bookFactoryManager" ref="factoryRef"></property>
+    </bean>
+
+    <bean class="org.example.application.service.AdminBookService">
+        <property name="bookRepositoryInterface" ref="refMysql"></property>
+        <property name="bookFactoryManager" ref="factoryRef"></property>
+    </bean>
+
+    <bean id="refMysql" class="org.example.infrastructure.MysqlBookRepository"></bean>
+    <bean id="refInMemory" class="org.example.infrastructure.InMemoryBookRepository"></bean>
+
+    <bean id="factoryRef" class="org.example.domain.BookFactoryManager"></bean>
+</beans>
