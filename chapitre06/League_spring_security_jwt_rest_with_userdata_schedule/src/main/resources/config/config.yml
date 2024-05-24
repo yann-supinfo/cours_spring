@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+database:
+  name: league_dev
+  schema-initializer: "sql/schema-dev.sql"
+  data-initializer: "sql/data-dev.sql"
+insert-data: false
+server:
+  port: 8081
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://localhost:9020/
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+database:
+  name: league_prod
+  schema-initializer: "sql/schema-prod.sql"
+  data-initializer: "sql/data-prod.sql"
+insert-data: false
+server:
+  port: 8082
+
+---

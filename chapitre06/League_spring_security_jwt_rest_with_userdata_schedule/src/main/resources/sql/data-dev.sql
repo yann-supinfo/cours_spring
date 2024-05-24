@@ -1,0 +1,6 @@
+USE league_dev;
+
+INSERT INTO role (name) VALUES ('ROLE_USER');
+INSERT INTO role (name) VALUES ('JOURNALISTE');
+INSERT INTO role (name) VALUES ('MEMBER_LEAGUE');
+INSERT INTO role (name) VALUES ('ROLE_ADMIN');
