@@ -1,0 +1,128 @@
+
+---------------------------------
+Création d'un utilisateur
+
+POST http://localhost:8081/user
+
+body raw json
+
+{
+    "username": "username",
+    "password": "password",
+    "roles": [
+        {
+            "name": "role1"
+        },
+  	{
+            "name": "role2"
+        },
+  	{
+            "name": "roleN"
+        }
+    ]
+}
+
+Example : 
+
+{
+    "username": "john",
+    "password": "secret",
+    "roles": [
+        {
+            "name": "JOURNALISTE"
+        }
+    ]
+}
+
+
+-----------------------------------
+
+Création d'une saison 
+
+
+POST http://localhost:8081/saisons
+
+body raw json
+
+{
+  "year": year
+}
+
+Example:
+
+
+{
+  "year": 2025
+}
+
+---------------------------------
+
+Création d'une journée 
+
+POST http://localhost:8081/days
+
+body raw json
+
+{
+    "numero": journée,
+    "saisonId": saisonID
+}
+
+Example 
+
+{
+    "numero": 1, // 01 janvier
+    "saisonId": 1
+}
+
+---------------------------------
+
+Création d'une équipe 
+
+POST http://localhost:8081/teams
+
+body raw json
+
+{
+    "name": "TeamName"
+}
+
+Example :
+
+{
+    "name": "FC Barcelone"
+}
+
+---------------------------------
+
+Enregistrer une équipe dans une saison 
+
+POST http://localhost:8081/saisons/register/saison/{saisonId}/team/{teamId}
+
+Example : 
+
+POST http://localhost:8081/saisons/register/saison/1/team/1 // Enregistre l'équipe 1 dans la saison 1
+POST http://localhost:8081/saisons/register/saison/1/team/2 // Enregistre l'équipe 2 dans la saison 1
+
+
+---------------------------------
+
+Création d'un match 
+
+POST http://localhost:8081/clashs
+
+body raw json
+
+{
+    "homeTeamId": homeTeamId , 
+    "awayTeamId": homeTeamId ,
+    "clashDate": "yyyy-mm-dd hh:mm"
+}
+
+Example : 
+
+{
+    "homeTeamId": 1, 
+    "awayTeamId": 2,
+    "clashDate": "2025-01-01 20:00" // jour et saison retrouver à partir de la date
+}

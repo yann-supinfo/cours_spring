@@ -1,0 +1,21 @@
+<configuration>
+
+        <property name="LOG_PATTERN" value="CUSTOM LOG %d{yyyy-MM-dd HH:mm:ss:SSS} %-5level [%thread] %logger{36} - %msg %n "/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                ${LOG_PATTERN}
+            </pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.example" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <root level="WARN">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration>
