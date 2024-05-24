@@ -1,0 +1,22 @@
+Selon la configuration des bases de données il peut y avoir une erreur de clé 
+
+Pour resoudre le problème ajouter à chaque expression sql ENGINE=InnoDB
+
+Ex :
+CREATE TABLE IF NOT EXISTS user_role (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    role_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (role_id) REFERENCES role(id)
+);
+
+devient
+
+CREATE TABLE IF NOT EXISTS user_role (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    role_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (role_id) REFERENCES role(id)
+)ENGINE=InnoDB;
